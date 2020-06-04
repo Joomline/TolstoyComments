@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.5.0" type="plugin" group="content" method="upgrade">
+    <name>Tolstoy Comments</name>
+    <author>JoomLine</author>
+    <creationDate>04.06.2020</creationDate>
+    <copyright>(C) 2020 JoomLine(https://joomline.ru)</copyright>
+    <license>GNU/GPL: http://www.gnu.org/copyleft/gpl.html</license>
+    <authorEmail>sale@joomline.ru</authorEmail>
+    <authorUrl>https://joomline.ru</authorUrl>
+    <version>1.0.0</version>
+    <description>PLG_TOLSTOYCOMMENTS_DESC_ALL</description>
+   <files>   
+        <filename plugin="tolstoycomments">tolstoycomments.php</filename>
+    </files>
+    <languages folder="language">
+        <language tag="en-GB">en-GB/en-GB.plg_content_tolstoycomments.ini</language>
+		<language tag="en-GB">en-GB/en-GB.plg_content_tolstoycomments.sys.ini</language>
+        <language tag="ru-RU">ru-RU/ru-RU.plg_content_tolstoycomments.ini</language>
+		<language tag="ru-RU">ru-RU/ru-RU.plg_content_tolstoycomments.sys.ini</language>    
+        </languages>
+    	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field name="apiId" type="text" label="PLG_TOLSTOYCOMMENTS_APIID_LABEL" default="api ID"/>
+				<field name="autoAdd" type="radio" default="0" label="PLG_TOLSTOYCOMMENTS_AUTOADD_LABEL" description="PLG_TOLSTOYCOMMENTS_AUTOADD_DESC">
+				  <option value="0">PLG_TOLSTOYCOMMENTS_NO</option>
+				  <option value="1">PLG_TOLSTOYCOMMENTS_YES</option>
+				</field>
+				<field name="categories" type="category" extension='com_content' default="0" multiple="multiple"
+						label="PLG_TOLSTOYCOMMENTS_EXCLUDE_CATEGORY_LABEL"
+						description="PLG_TOLSTOYCOMMENTS_EXCLUDE_CATEGORY_DESC"/>
+			</fieldset>
+		</fields>
+	</config>
+    <updateservers><server type="extension" priority="1" name="Tolstoy Comments">https://joomline.net/update.html?extension_id=98.xml</server></updateservers>
+</extension>
