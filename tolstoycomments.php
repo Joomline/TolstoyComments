@@ -18,9 +18,10 @@ class plgContentTolstoycomments extends JPlugin
 
 	public function onContentAfterDisplay($context, &$article, &$params, $limitstart = 0){
 	if($context == 'com_content.article'){
+		
 
 		JPlugin::loadLanguage( 'plg_content_tolstoycomments' );	
-
+		
 
 
 		if (strpos($article->text, '{tolstoycomments-off}') !== false) {
@@ -37,11 +38,11 @@ class plgContentTolstoycomments extends JPlugin
 			$view = JRequest::getCmd('view');
 			if ($view == 'article') {
 
-				$doc = &JFactory::getDocument();
+				$doc = JFactory::getDocument();
 				
 				$apiId 			= $this->params->def('apiId');
 
-
+				$scriptPage = "";
 				$pagehash = $article->id;
 				$scriptPage .= <<<HTML
 				
@@ -53,7 +54,7 @@ class plgContentTolstoycomments extends JPlugin
 						window['tolstoycomments'].push({
 							action: 'init',
 							values: {
-								identity: "$scriptPage",
+								identity: "$pagehash",
 								visible: true
 							}
 						});
