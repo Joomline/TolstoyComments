@@ -2,12 +2,12 @@
 <extension version="3.5.0" type="plugin" group="content" method="upgrade">
     <name>Tolstoy Comments</name>
     <author>JoomLine</author>
-    <creationDate>04.06.2020</creationDate>
+    <creationDate>05.06.2020</creationDate>
     <copyright>(C) 2020 JoomLine(https://joomline.ru)</copyright>
     <license>GNU/GPL: http://www.gnu.org/copyleft/gpl.html</license>
     <authorEmail>sale@joomline.ru</authorEmail>
     <authorUrl>https://joomline.ru</authorUrl>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <description>PLG_TOLSTOYCOMMENTS_DESC_ALL</description>
    <files>   
         <filename plugin="tolstoycomments">tolstoycomments.php</filename>
