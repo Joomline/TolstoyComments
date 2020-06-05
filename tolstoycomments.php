@@ -16,7 +16,7 @@ jimport('joomla.plugin.plugin');
 class plgContentTolstoycomments extends JPlugin
 {
 
-	public function onContentAfterDisplay($context, &$article, &$params, $limitstart = 0){
+	public function onContentAfterDisplay($context, &$article, &$params, $limitstart){
 	if($context == 'com_content.article'){
 		
 
@@ -62,7 +62,7 @@ class plgContentTolstoycomments extends JPlugin
 HTML;
 				
 				if ($this->params->def('autoAdd') == 1) {
-					$article->text = str_replace("{tolstoycomments}",$scriptPage,$article->text);
+					$article->text = str_replace("{tolstoycomments}","",$article->text);
 					return $scriptPage;				
 				} else {
 					$article->text = str_replace("{tolstoycomments}",$scriptPage,$article->text);
