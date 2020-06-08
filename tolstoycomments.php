@@ -20,8 +20,7 @@ class plgContentTolstoycomments extends JPlugin
 	if($context == 'com_content.article'){
 		
 
-		JPlugin::loadLanguage( 'plg_content_tolstoycomments' );	
-		
+		JPlugin::loadLanguage( 'plg_content_tolstoycomments' );			
 
 
 		if (strpos($article->text, '{tolstoycomments-off}') !== false) {
@@ -35,7 +34,10 @@ class plgContentTolstoycomments extends JPlugin
 
 		$exceptcat = is_array($this->params->def('categories')) ? $this->params->def('categories') : array($this->params->def('categories'));
 		if (!in_array($article->catid,$exceptcat)) {
-			$view = JRequest::getCmd('view');
+		
+			$jinput = JFactory::getApplication()->input;
+			$view = $jinput->get('view'); ;
+			
 			if ($view == 'article') {
 
 				$doc = JFactory::getDocument();
