@@ -5,15 +5,22 @@ class JFormFieldMybutton extends JFormField
 {
      protected $type = 'Mybutton';
      protected function getInput()
-    {
-		$plg_tolstoycomments_warning = JText::_('PLG_TOLSTOYCOMMENTS_WARNING');
-		$plg_tolstoycomments_download_comments = JText::_('PLG_TOLSTOYCOMMENTS_DOWNLOAD_COMMENTS');
-		$url = JUri::root();
+    {	$plugin = JPluginHelper::getPlugin('content', 'tolstoycomments');	
+			$paramsplug = new JRegistry($plugin->params);
+			$apikey = str_replace('api key','',$paramsplug->get('apikey',false)); 
+			if(empty($apikey)){
+				$html ='';
+			}else{
+			$plg_tolstoycomments_warning = JText::_('PLG_TOLSTOYCOMMENTS_WARNING');
+			$plg_tolstoycomments_download_comments = JText::_('PLG_TOLSTOYCOMMENTS_DOWNLOAD_COMMENTS');
+			$plg_tolstoycomments_cron = JText::_('PLG_TOLSTOYCOMMENTS_CRON');
+			$url = JUri::root();
         $html = <<<HTML
+		$plg_tolstoycomments_cron - $url?option=com_ajax&plugin=tolstoycomments&group=content&format=json&key=$apikey
 		<script type="text/javascript">
 		function Get_tolstoycomments(){
                     jQuery.ajax( {
-				url: "$url?option=com_ajax&plugin=tolstoycomments&group=content&format=json",
+				url: "$url?option=com_ajax&plugin=tolstoycomments&group=content&format=json&key=$apikey",
 				type: "post",
 				success: function(response){
                     if(response  == "unsucess"){
@@ -28,6 +35,7 @@ class JFormFieldMybutton extends JFormField
 			</script>
 		<button onclick="Get_tolstoycomments();return false;">$plg_tolstoycomments_download_comments</button>
 HTML;
+			}
 		$db = JFactory::getDBO();
 		$query = 'SELECT id_comm, datеtime, user_name, message FROM #__tolstoycomments ORDER BY `id_comm` DESC';
 		$db->setQuery($query);

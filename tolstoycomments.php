@@ -94,14 +94,15 @@ HTML;
 	}
 }		
 			public function onAjaxTolstoycomments() { 
-				ini_set("display_errors", "1");
-				ini_set("display_startup_errors", "1");
-				ini_set('error_reporting', E_ALL);
 				$input = JFactory::getApplication()->input;
 				$plugin = JPluginHelper::getPlugin('content', 'tolstoycomments');	
 				$paramsplug = new JRegistry($plugin->params);
-				$apikey = $paramsplug->get('apikey',false);
+				$apikey = str_replace('api key','',$paramsplug->get('apikey',false)); 
 				$apiId = $paramsplug->get('apiId',false);
+				if($apikey != $input->get('key')){
+					echo 'unsucess';
+					JFactory::getApplication()->close();
+				}
 				
 					if($apikey && $apiId){
 						$i=0;
