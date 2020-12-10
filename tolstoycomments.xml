@@ -25,7 +25,6 @@
 		<folder>sql</folder>
 		<folder>fields</folder>
 	</files>
-	<scriptfile>script.php</scriptfile>
     <languages folder="language">
         <language tag="en-GB">en-GB/en-GB.plg_content_tolstoycomments.ini</language>
 		<language tag="en-GB">en-GB/en-GB.plg_content_tolstoycomments.sys.ini</language>
