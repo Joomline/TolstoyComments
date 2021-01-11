@@ -105,13 +105,13 @@ HTML;
 				}
 				
 					if($apikey && $apiId){
-						$i=0;
 						$db = JFactory::getDbo();
 						$query = $db->getQuery(TRUE); 
-						$query->select('MIN(id_comm) as idcomm');
+						$query->select('MAX(id_comm) as idcomm');
 						$query->from('#__tolstoycomments');
 						$db->setQuery($query);
-						$comment_last_id = $db->loadResult();
+						$comment_last_id_base = $db->loadResult();
+						$comment_last_id = '';
 						while ($comment_last_id > 0 || $comment_last_id == ""){
 							$comment_last ='';
 							if($comment_last_id > 0){
@@ -131,9 +131,13 @@ HTML;
 								$comment_last_id = $results->data->comment_last_id;
 							}
 							foreach($results->data->comments as $comments){
-								
+								// echo '<pre>'.print_r($comments,1).'</pre>';
+								if($comments->id == $comment_last_id_base){
+									echo 'sucess';
+									JFactory::getApplication()->close();
+								}
 								if($comments->visible!='1'){continue;}
-								$i++;
+								
 								$values = array(
 									$db->quote($comments->id),
 									$db->quote($comments->message),
