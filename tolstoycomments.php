@@ -2,9 +2,9 @@
 /**
  * Tolstoy Comments
  *
- * @version 1.1.0
+ * @version 1.1.1
  * @author JoomLine(sale@joomline.ru)
- * @copyright (C) 2020 JoomLine(https://joomline.ru)
+ * @copyright (C) 2020-2021 JoomLine(https://joomline.ru)
  * @license GNU/GPL: http://www.gnu.org/copyleft/gpl.html
  **/
 
